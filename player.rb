@@ -19,6 +19,10 @@ class Player
     @health > 100
   end
   
+  def <=>(other)
+    other.score <=> self.score
+  end
+  
   def to_s
     "I'm #{@name} with a health of #{@health} and a score of #{self.score}."
   end
