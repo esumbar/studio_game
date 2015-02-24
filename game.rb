@@ -14,6 +14,9 @@ class Game
     @players << player
   end
   
+  def total_points
+    @players.reduce(0) {|sum, p| sum + p.points}
+  end
   def print_name_and_health(player)
     puts "#{player.name} (#{player.health})"
   end
@@ -32,6 +35,13 @@ class Game
     wimpy_players.each do |p|
       print_name_and_health(p)
     end
+    
+    @players.each do |p|
+      puts "\n#{p.name}'s points total:"
+      puts "#{p.points} grand total points"
+    end
+    
+    puts "\n#{self.total_points} total points from treasures found"
     
     puts "\n#{@title} High Scores:"
     @players.sort.each do |p|

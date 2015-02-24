@@ -5,6 +5,7 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasures = Hash.new(0)
   end
   
   def name=(new_name)
@@ -12,7 +13,17 @@ class Player
   end
   
   def score
-    @health + @name.length
+    @health + self.points
+  end
+  
+  def points
+    @found_treasures.values.reduce(0, :+)
+  end
+  
+  def found_treasure(treasure)
+    @found_treasures[treasure.name] += treasure.points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points}."
+    puts "#{@name}'s treasures: #{@found_treasures}"
   end
   
   def strong?
@@ -24,7 +35,7 @@ class Player
   end
   
   def to_s
-    "I'm #{@name} with a health of #{@health} and a score of #{self.score}."
+    "I'm #{@name} with a health = #{@health}, points = #{self.points}, and score = #{self.score}."
   end
   
   def blam
