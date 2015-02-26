@@ -41,6 +41,14 @@ class Game
       puts "#{p.points} grand total points"
     end
     
+    @players.sort.each do |p|
+      puts "\n#{p.name}'s point totals:"
+      p.each_found_treasure do |t|
+        puts "#{t.points} total #{t.name} points"
+      end
+      puts "#{p.points} grand total points"
+    end
+    
     puts "\n#{self.total_points} total points from treasures found"
     
     puts "\n#{@title} High Scores:"
@@ -65,8 +73,11 @@ class Game
       puts "\nRound #{r}:"
       @players.each do |p|
         GameTurn.take_turn(p)
-      end      
+      end
+      if block_given?
+        break if yield
+      end
     end
-    
   end
+  
 end
