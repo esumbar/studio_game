@@ -73,15 +73,6 @@ describe Player do
       Treasure.new(:bottle, 25)])
   end
   
-  it 'creates a Player from a CSV' do
-    string = "Test,100"
-    player = Player.from_csv(string)
-    
-    expect(player).to be_an_instance_of(Player)
-    expect(player.name).to eq("Test")
-    expect(player.health).to eq(100)
-  end
-  
   context 'with a health greater than 100' do
     before do
       @player = Player.new("larry", 150)
