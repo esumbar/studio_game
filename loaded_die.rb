@@ -1,16 +1,18 @@
 require_relative "auditable"
 
-class LoadedDie
+module StudioGame
+  class LoadedDie
   
-  include Auditable
+    include Auditable
   
-  attr_reader :number
+    attr_reader :number
   
-  def roll
-    numbers = [1, 1, 2, 5, 6, 6]
-    @number = numbers.sample
-    self.audit
-    @number
+    def roll
+      numbers = [1, 1, 2, 5, 6, 6]
+      @number = numbers.sample
+      self.audit
+      @number
+    end
+  
   end
-  
 end

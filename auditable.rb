@@ -1,7 +1,9 @@
-module Auditable
+module StudioGame
+  module Auditable
   
-  def audit
-    puts "Rolled a #{self.number} (#{self.class})"
+    def audit
+      puts "Rolled a #{self.number} (#{self.class})"
+    end
+  
   end
-  
 end
